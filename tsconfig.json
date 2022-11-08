@@ -1,26 +1,28 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
+    "noEmit": true,
+    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": false,
+    "sourceMap": true,
+    "inlineSources": true,
+    "sourceRoot": "./"
   },
-  "include": [
-    "src"
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx", "src/shared/components/Toast/Toast.tsx", "src/shared/hooks/useToast.tsx", "src/shared/utils/pagination.ts",
+    "src/shared/components/ConfirmationPopup/ConfirmationPopup.tsx"
   ]
 }
