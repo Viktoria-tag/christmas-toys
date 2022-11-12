@@ -1,16 +1,15 @@
+@import './fonts.scss';
+
 $mobileFirst: false;
 $develop: false;
 $box: false;
 
-$default-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-$font-montserrat: "Montserrat", $default-font;
-
-
+$default-font: -apple-system, BlinkMacSystemFont, 'Sans Serif', Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-neucha: 'Neucha', $default-font;
 
 :root {
-  --bg: #fff;
-  --dark-shade: #3C3C3B;
-
+  --ligth-shade:  #FFFFFF;
+/*
   --accent: #0070f1;
   --accentDark: #0754d1;
   --accentDarker: #0347a3;
@@ -39,10 +38,10 @@ $font-montserrat: "Montserrat", $default-font;
   --shadeDarker: #3C3C3B;
   --shadeLight: #B7BABD;
   --shadeLighter: #B7BABD ;
-  --shadeLightest:#D0D4D8 ;
+  --shadeLightest:#D0D4D8 ;*/
 
-  --default-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-montserrat: "Montserrat", var(--default-font);
+  --default-font: -apple-system,  'Open Sans' , sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-neucha: 'Neucha', var(--default-font);
 }
 
 :root {}

@@ -6,6 +6,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { routes } from 'shared/constants';
 import './App.css';
 
+import './assets/styles/general.scss'
+
 function App() {
   return (
     <BrowserRouter>
