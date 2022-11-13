@@ -1,0 +1,46 @@
+@media (min-height: 450px) {
+
+  .ball {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .ball1 {
+    width: 350px;
+    height: 350px;
+    left: calc(50% - 550px);
+    top: 150px;
+    background-image: url("../../assets/images/ball/1.png");
+  }
+
+  .ball2 {
+    width: 200px;
+    height: 200px;
+    left: calc(50% + 250px);
+    top: 120px;
+    background-image: url("../../assets/images/ball/2.png");
+  }
+
+  .ball::before {
+    content: "";
+    position: absolute;
+    background-color: #aaa;
+  }
+
+  .ball1::before {
+    top: -215px;
+    left: calc(50% - 35px);
+    width: 4px;
+    height: 220px;
+    width: 5px;
+  }
+
+  .ball2::before {
+    top: -205px;
+    left: calc(50% - 22px);
+    width: 4px;
+    height: 210px;
+    width: 5px;
+  }
+}
