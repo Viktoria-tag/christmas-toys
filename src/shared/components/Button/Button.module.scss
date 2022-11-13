@@ -1,0 +1,36 @@
+@import '../../../assets/styles/reusable.scss';
+
+.ctrlButton {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 13px 22px 15px;
+  width: 320px;
+  height: 54px;
+  font-size: 24px;
+  font-family: var(--font-steppe);
+  font-weight: 400;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  transition-property: background-color, box-shadow, border-color;
+  transition-duration: .25s;
+  transition-timing-function: ease;
+}
+
+.mainPage {
+  color: var(--ligth-shade);
+  @include glass-bg;
+
+  &:hover,
+  :active {
+    box-shadow: 0 0 10px #24c5db;
+  }
+
+  ::before {
+    @include gradientBorder(rgba(34, 153, 235, 0.92), rgba(36, 197, 219, 0.26));
+  }
+}

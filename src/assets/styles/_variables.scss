@@ -6,7 +6,7 @@ $box: false;
 
 $default-font: -apple-system, BlinkMacSystemFont, 'Sans Serif', Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $font-neucha: 'Neucha', $default-font;
-
+$font-steppe:  'Steppe', $default-font;
 :root {
   --ligth-shade:  #FFFFFF;
 /*
@@ -42,6 +42,7 @@ $font-neucha: 'Neucha', $default-font;
 
   --default-font: -apple-system,  'Open Sans' , sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-neucha: 'Neucha', var(--default-font);
+  --font-steppe: 'Steppe', var(--default-font);
 }
 
 :root {}

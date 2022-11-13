@@ -1,3 +1,4 @@
+import { Button, ButtonStyleAttributes } from 'shared/components/Button';
 import styles from './Home.module.scss';
 
 export const Home = () => {
@@ -5,7 +6,10 @@ export const Home = () => {
     <>
       {/*<Header />*/}
       <div className={styles.home}>
-        <p className={styles.home__title}>CRA + INO starter kit!</p>
+        <div className={styles.home__textContainer}>
+          <p className={styles.home__title}>Помогите бабушке нарядить елку</p>
+        </div>
+        <Button buttonStyle={ButtonStyleAttributes.mainPage}>Начать</Button>
       </div>
     </>
   );

@@ -1,5 +1,37 @@
-.home{
+@import '../../assets/styles/reusable.scss';
+
+
+.home {
     background: url('../../assets/images/background/background.jpg');
     min-height: 100vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+
+    &__textContainer {
+        width: 593px;
+        height: 249px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        @include glass-bg;
+
+        ::before {
+           @include gradientBorder(rgba(34, 153, 235, 0.92), rgba(36, 197, 219, 0.26));
+        }
+
+    }
+
+    &__title {
+        font-size: 53px;
+        line-height: 58px;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: 'Neucha', var(--default-font);
+    }
 }
