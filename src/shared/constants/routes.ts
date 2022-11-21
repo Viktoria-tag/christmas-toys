@@ -1,5 +1,5 @@
 export const routes = {
     home: '/',
-    toys: '/toys',
-    tree: '/tree'
+    toys: 'toys',
+    tree: 'tree'
 };

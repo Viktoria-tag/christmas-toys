@@ -1,0 +1,75 @@
+.nav {
+
+    @media (--S) {}
+
+    &__list {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+
+        @media (--S) {}
+    }
+
+    &__item {
+
+        @media (--L) {}
+    }
+
+    &__link {
+        display: block;
+        line-height: 1.2;
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
+        color: inherit;
+        text-decoration: none;
+        margin-left: 15px;
+        margin-right: 15px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        position: relative;
+        transition-property: color;
+        transition-duration: .25s;
+        transition-timing-function: ease;
+
+        /* TODO ADD touchevents library
+       .no-touchevents &:hover {
+            color: #00A783;
+        }
+
+        .no-touchevents &:active {
+            color: #00A783;
+        }*/
+        &:hover {
+            color: #00A783;
+        }
+
+        &:active {
+            color: #00A783;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: transparent;
+            border-radius: 2px 2px 0 0;
+            transition-property: background-color;
+            transition-duration: .25s;
+            transition-timing-function: ease;
+        }
+
+        &_active {
+            color: #00A783;
+
+            &:before {
+                background-color: #00A783;
+            }
+        }
+    }
+}
