@@ -6,12 +6,10 @@ import s from './Header.module.scss';
 const Header = () => {
   return (
     <header className={s.header}>
-      <div className={s.header__box}>
         <div className={s.header__container}>
           <div className={s.header__group}>
-            <Logo className={s.header__logo} />
             <Navigation className={s.header__nav} />
-          </div>
+            <Logo className={s.header__logo} />
         </div>
       </div>
     </header>

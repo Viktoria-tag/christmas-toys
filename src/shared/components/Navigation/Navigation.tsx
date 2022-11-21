@@ -14,26 +14,26 @@ interface NavigationProps {
 }
 
 const Navigation: FC<NavigationProps> = ({ className }) => {
-  const pathname =usePathname()
+  const pathname = usePathname()
   const [activePage, setActivePage] = useState<string>(pathname)
 
-console.log(pathname)
+  console.log(pathname)
 
   return (
     <nav className={classNames(s.nav)}>
       <ul className={s.nav__list}>
         <li className={s.nav__item}>
-          <Link className={classNames(s.nav__link, { [s.nav__link_active]: activePage })} to={routes.home}>
-            <Icon name={IconsName.Tree} />
+          <Link className={classNames(s.nav__link, { [s.nav__link_activeTree]: activePage })} to={routes.home}>
+            <Icon name={IconsName.Tree} height={60} width={48} />
           </Link>
         </li>
         <li className={s.nav__item}>
-          <Link className={classNames(s.nav__link, { [s.nav__link_active]: activePage })} to={routes.home}>
+          <Link className={classNames(s.nav__link, { [s.nav__link_active]: activePage })} to={routes.toys}>
             Игрушки
           </Link>
         </li>
         <li className={s.nav__item}>
-          <Link className={classNames(s.nav__link, { [s.nav__link_active]: activePage })} to={routes.home}>
+          <Link className={classNames(s.nav__link, { [s.nav__link_active]: activePage })} to={routes.tree}>
             Ёлка
           </Link>
         </li>
