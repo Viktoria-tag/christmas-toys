@@ -10,23 +10,21 @@
 
     &__icon {
         @include hoverGradientBg;
-        mask-image: url('../../../assets/images/icons/tree.svg');
+        mask-image: url('/assets/images/icons/tree.svg');
         mask-size: 48px 60px;
         mask-repeat: no-repeat;
         mask-position: center center;
 
         &:hover {
-            padding-left: 13px;
-            padding-right: 15px;
-            padding-top: 30px;
-            padding-bottom: 30px;
-            margin-left: 10px;
-            margin-right: 10px;
             cursor: pointer;
 
             a {
-                width: 100%;
+                display: block;
+                width: 78px;
                 min-height: 80px;
+                padding-left: 13px;
+                padding-right: 15px;
+                margin:0;
             }
 
             svg {
@@ -49,7 +47,7 @@
         padding-bottom: 30px;
         position: relative;
         transition-property: color;
-        transition-duration: .5s;
+        transition-duration: .25s;
         transition-timing-function: ease;
         letter-spacing: .2rem;
         text-transform: uppercase;

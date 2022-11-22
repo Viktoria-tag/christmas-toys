@@ -2,15 +2,12 @@
 
 
 .home {
-    background: url('../../assets/images/background/background.jpg');
-    min-height: 100vh;
-    width: 100%;
+    padding-top: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 30px;
-    position: relative;
 
     &__textContainer {
         width: 593px;
