@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path={routes.home} element={<BaseLayout />} >
-          <Route index element={<Home />} />
+          <Route index  element={<Home />} />
           <Route path={routes.toys} element={<Toys />} />
           <Route path={routes.tree} element={<Tree />} />
         </Route>

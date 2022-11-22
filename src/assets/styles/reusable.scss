@@ -16,3 +16,7 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
+
+@mixin hoverGradientBg {
+  background: linear-gradient(to left, rgba(114, 182, 227, 0.92), white);
+}

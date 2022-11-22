@@ -1,3 +1,4 @@
+@import 'src/assets/styles/reusable.scss';
 .nav {
     &__list {
         list-style-type: none;
@@ -5,6 +6,33 @@
         align-items: center;
         margin: 0;
         padding: 0;
+    }
+
+    &__icon {
+        @include hoverGradientBg;
+        mask-image: url('../../../assets/images/icons/tree.svg');
+        mask-size: 48px 60px;
+        mask-repeat: no-repeat;
+        mask-position: center center;
+
+        &:hover {
+            padding-left: 13px;
+            padding-right: 15px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+
+            a {
+                width: 100%;
+                min-height: 80px;
+            }
+
+            svg {
+                display: none;
+            }
+        }
     }
 
     &__link {
@@ -34,12 +62,13 @@
         .no-touchevents &:active {
             color: #00A783;
         }*/
-        &:hover, &:active {
-            text-shadow:  white 2px 0 5px;
-            color:#278D9F;
-            background :linear-gradient(to left, rgba(114, 182, 227, 0.92), white);
+        &:hover,
+        &:active {
+            text-shadow: white 2px 0 5px;
+            color: #278D9F;
+            @include hoverGradientBg;
             background-clip: text;
-             -webkit-text-fill-color: transparent;
+            -webkit-text-fill-color: transparent;
         }
 
         &:before {
@@ -57,13 +86,14 @@
         }
 
         &_active {
-            text-shadow:  white 2px 0 5px;
-            color:#278D9F;
-            background :linear-gradient(to left, rgba(114, 182, 227, 0.92), white);
+            text-shadow: white 2px 0 5px;
+            color: #278D9F;
+            @include hoverGradientBg;
             background-clip: text;
-             -webkit-text-fill-color: transparent;
+            -webkit-text-fill-color: transparent;
+
             &:before {
-                background :linear-gradient(to left, rgba(114, 182, 227, 0.92), white);
+                @include hoverGradientBg;
                 box-shadow: 0 0 10px #24c5db;
             }
         }

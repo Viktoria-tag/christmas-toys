@@ -22,9 +22,9 @@ const Navigation: FC<NavigationProps> = ({ className }) => {
   return (
     <nav className={classNames(s.nav)}>
       <ul className={s.nav__list}>
-        <li className={s.nav__item}>
-          <Link className={classNames(s.nav__link)} to={routes.home}>
-            <Icon name={IconsName.Tree} height={60} width={48} />
+        <li className={classNames(s.nav__item, s.nav__icon)}>
+          <Link className={classNames(s.nav__link)} to={routes.home} >
+            <Icon name={IconsName.Tree} height={60} width={48}  />
           </Link>
         </li>
         <li className={s.nav__item}>
