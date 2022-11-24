@@ -16,9 +16,6 @@ interface NavigationProps {
 const Navigation: FC<NavigationProps> = ({ className }) => {
   const pathname = usePathname()
 
-
-  console.log(pathname)
-
   return (
     <nav className={classNames(s.nav)}>
       <ul className={s.nav__list}>

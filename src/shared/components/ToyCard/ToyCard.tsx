@@ -5,6 +5,7 @@ import s from './ToyCard.module.scss'
 export const ToyCard:FC =()=>{
     return(
         <>
+        
         </>
     )
 }
