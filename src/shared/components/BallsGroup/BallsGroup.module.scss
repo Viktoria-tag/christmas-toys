@@ -11,7 +11,7 @@
     height: 350px;
     left: calc(50% - 550px);
     top: 150px;
-    background-image: url("../../assets/images/ball/1.png");
+    background-image: url("/assets/images/ball/1.png");
   }
 
   .ball2 {
@@ -19,7 +19,7 @@
     height: 200px;
     left: calc(50% + 250px);
     top: 120px;
-    background-image: url("../../assets/images/ball/2.png");
+    background-image: url("/assets/images/ball/2.png");
   }
 
   .ball::before {

@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 import { Button, ButtonStyleAttributes } from 'shared/components/Button';
 import { routes } from 'shared/constants';
-import { BallsGroup } from 'modules/BallsGroup';
+import { BallsGroup } from 'shared/components/BallsGroup';
 
 import styles from './Home.module.scss';
 
