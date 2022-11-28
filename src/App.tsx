@@ -10,6 +10,7 @@ import './App.css';
 import './assets/styles/general.scss'
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>

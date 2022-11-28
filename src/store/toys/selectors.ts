@@ -1,6 +1,8 @@
+const getSelectedToys = (state: any) => state.toys.selectedToyList;
 const getToys = (state: any) => state.toys.toyList;
 export const toysSelectors = {
-  getToys
+  getSelectedToys,
+  getToys,
 }
 /*const getUserName = (state: any) => state.auth.user.fullName;
 const getError = (state: any) => state.auth.auth.loginError;
