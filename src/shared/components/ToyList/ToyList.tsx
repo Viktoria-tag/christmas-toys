@@ -14,9 +14,11 @@ export const ToyList: FC = () => {
     const toys = useSelector(toysSelectors.getToys)
     return (
         <div className={s.container}>
-            {toys.length && toys.map((toy: Toy, index: number) => {
-                return <ToyCard key={index} toy={toy}/>
-            })}
+            <div className={s.toyList}>
+                {toys.length && toys.map((toy: Toy, index: number) => {
+                    return <ToyCard key={index} toy={toy} />
+                })}
+            </div>
         </div>
     )
 }

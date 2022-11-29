@@ -9,9 +9,18 @@
     cursor: pointer;
     border-radius: 30px;
     padding: 20px;
+    font-size: 17px;
+    line-height:24px;
+    letter-spacing: 0.2em;
+    min-height: 230px;
     @include glass-bg;
+
     ::before {
         @include gradientBorder(rgba(34, 155, 235, 0.482), rgba(36, 197, 219, 0.5));
+     }
+
+     h2{
+        margin-bottom: 15px;
      }
 
     ul {
