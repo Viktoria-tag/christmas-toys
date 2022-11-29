@@ -15,6 +15,7 @@ export type Toy = {
   color: Color | Color[],
   size: Size,
   favorite: boolean,
-  count: number
+  count: number,
+  num:number,
 }
 
