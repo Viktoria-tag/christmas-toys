@@ -14,6 +14,10 @@ export interface IconProps {
   stroke?: boolean;
 }
 
+export const enum IconsName {
+  Tree = "treewhite",
+}
+
 const Icon: FC<IconProps> = ({name, height = 24, width = 24, className, fill = false, stroke = false}) => {
   return (
     <svg

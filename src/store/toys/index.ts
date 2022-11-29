@@ -6,6 +6,8 @@ import { toysAsyncActions } from './actions';
 
 export type ToysStore = {
   toyList: Toy[];
+  selectedToyList: Toy[],
+  isLoading: boolean,
 };
 
 const toysSlice = createSlice({

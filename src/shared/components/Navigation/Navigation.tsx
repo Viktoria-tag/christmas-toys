@@ -1,11 +1,10 @@
 import classNames from 'classnames';
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import { routes } from 'shared/constants/routes';
 import { usePathname } from 'shared/hooks';
-import { IconsName } from 'typings/enums';
-import { Icon } from '../Icon';
+import { Icon, IconsName } from 'shared/components/Icon';
 
 import s from './Navigation.module.scss';
 

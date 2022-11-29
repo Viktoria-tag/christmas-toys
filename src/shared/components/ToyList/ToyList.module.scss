@@ -1,12 +1,12 @@
 .container {
-width: 100%;
+    width: 100%;
 }
-.toyList{
+
+.toyList {
     box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
- 
     justify-content: space-between;
     gap: 30px;
     padding-bottom: 40px;

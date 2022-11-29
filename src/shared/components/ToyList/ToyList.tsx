@@ -1,8 +1,6 @@
-import { FC, useEffect } from 'react';
+import { FC} from 'react';
 import { useSelector } from 'react-redux';
 
-import { useRootDispatch } from 'store';
-import { toysAsyncActions } from 'store/toys/actions';
 import { toysSelectors } from 'store/toys/selectors';
 import { Toy } from 'typings/global';
 import { ToyCard } from '../ToyCard';

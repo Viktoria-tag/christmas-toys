@@ -7,7 +7,7 @@ import { routes } from 'shared/constants';
 import { BaseLayout } from 'shared/layouts/Base';
 import './App.css';
 
-import './assets/styles/general.scss'
+import 'assets/styles/general.scss'
 
 function App() {
 
