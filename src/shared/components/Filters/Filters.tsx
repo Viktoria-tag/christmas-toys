@@ -18,6 +18,6 @@ export const Filters = () => {
     return (<>
     <ImagesFilter title={'Форма'} imageList={shapesOfToys}></ImagesFilter>
     <ImagesFilter title={'Цвет'} imageList={colorOfToys} className="color"></ImagesFilter>
-
+    <ImagesFilter title={'Размер'} imageList={['ball2','ball2','ball2']} className="size"></ImagesFilter>
     </>)
 }

@@ -12,8 +12,8 @@ type FilterProps = {
 }
 
 export const ImagesFilter: FC<FilterProps> = ({ title, imageList, className }) => {
-    return (<>
+    return (<div>
         <h3>{title}</h3>
         {imageList.map((image, index) => <ImageFilterBtn key={index} image={image} className={className}/>)}
-    </>)
+    </div>)
 }
