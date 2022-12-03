@@ -1,0 +1,13 @@
+.btn {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--ligth-shade);
+    margin: 10px;
+
+    &:hover {
+        transition: 0.5s color ease;
+        color: rgba(114, 182, 227, 0.6);
+    }
+}
