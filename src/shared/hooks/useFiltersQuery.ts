@@ -1,5 +1,17 @@
 import { useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router";
+import { useSearchParams } from "react-router-dom";
+import {FilterType} from 'shared/components/Filters'
+
+export function useFilterQuery(){
+
+const [searchParams, setSearchParams] = useSearchParams();
+return [searchParams, setSearchParams]
+
+
+  // возвращаем сам фильтр и две функции для его изменения
+  //return [filter, сhangeFilter, сlearFilter];
+}
 
 
 
@@ -9,17 +21,19 @@ const getObjectFromQueryString = (search: string) => {
   
   return Object.fromEntries(paramsEntries);
 };
-const getQueryStringFromObject = (filter: Filter) => {
-  return new URLSearchParams(filter).toString();
+const getQueryStringFromObject = (filter: FilterType) => {
+  console.log(filter)
+  return new URLSearchParams(filter).toString()
 };
+
 function omit(obj:object, key: keyof object) {
   var result = {... obj};
      delete result[key];
   return result;
 }
 
-type useFilterQueryTypes<Filter> = [
-  Filter,
+type useFilterQueryTypes<FilterType> = [
+  FilterType,
   (fieldName: string) => (value: string) => void,
   (fieldName: string) => () => void
 ];
@@ -27,8 +41,8 @@ type useFilterQueryTypes<Filter> = [
 
 export function useFilterQuery<T extends object>(
   getFilterQuery?: (query: string) => T,
-  getSearchQuery?: (filter: Filter) => string
-): useFilterQueryTypes<Filter> {
+  getSearchQuery?: (filter: FilterType) => string
+): useFilterQueryTypes<FilterType> {
   const { search } = useLocation();
   const navigate = useNavigate();
 
@@ -38,7 +52,7 @@ export function useFilterQuery<T extends object>(
     [search, getFilterQuery]
   );
 
-  const setSearchQuery = useCallback((filter: Filter) => {
+  const setSearchQuery = useCallback((filter:FilterType) => {
       // используем функцию переданную через параметр или дефолтную
       const search = getSearchQuery 
         ? getSearchQuery(filter) 
@@ -58,7 +72,7 @@ export function useFilterQuery<T extends object>(
   );
 
   const сlearFilter = useCallback((fieldName: string) => () => {
-      const newFilter = omit(filter, fieldName as keyof Filter);
+      const newFilter = omit(filter, fieldName as keyof FilterType);
 
       setSearchQuery(newFilter);
    },
@@ -66,4 +80,5 @@ export function useFilterQuery<T extends object>(
   );
   // возвращаем сам фильтр и две функции для его изменения
   return [filter, сhangeFilter, сlearFilter];
-}*/
+}
+*/

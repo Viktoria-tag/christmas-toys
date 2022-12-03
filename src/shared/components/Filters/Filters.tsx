@@ -9,7 +9,7 @@ type SortingDirection = 'highest' | 'lowest';
 type Props={
     className?:string
 }
-type Filters = {
+export type FilterType = {
     shape: string;
     color?: string;
     size?: string;
@@ -20,11 +20,12 @@ type Filters = {
     sortByQuantity?: SortingDirection | null;
 }
 export const Filters:FC<Props> = ({className}) => {
-console.log(className)
+
+
     return (
     <div className={className}>
-    <ImagesFilter title={'Форма'} imageList={shapesOfToys}></ImagesFilter>
-    <ImagesFilter title={'Цвет'} imageList={colorOfToys} className="color"></ImagesFilter>
-    <ImagesFilter title={'Размер'} imageList={['ball2','ball2','ball2']} className="size"></ImagesFilter>
+    <ImagesFilter name='shape' title={'Форма'} valueList={shapesOfToys}></ImagesFilter>
+    <ImagesFilter name='color' title={'Цвет'} valueList={colorOfToys} className="color"></ImagesFilter>
+    <ImagesFilter name='size' title={'Размер'} valueList={['small','average', 'big']} className="size"></ImagesFilter>
     </div>)
 }
