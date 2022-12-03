@@ -1,12 +1,19 @@
+import classNames from "classnames";
 import { FC } from "react";
 import { Icon } from "shared/components/Icon";
 
 import s from '../ImagesFilter.module.scss'
 
-export const ImageFilterBtn: FC<{image:string}> = ({image}) => {
+type Props={
+    image:string,
+    className?:string
+}
+
+export const ImageFilterBtn: FC<Props> = ({image, className}) => {
+    console.log(className)
     return (
-        <button className={s.btn}>
-            <Icon name={image} className="shapeFilter" height = {36} width ={36} />
+        <button className={classNames(s.btn, {[s[`filter__btn_${className}`]]:className})}>
+            <Icon name={image} height = {36} width ={36} />
         </button>
     )
 }

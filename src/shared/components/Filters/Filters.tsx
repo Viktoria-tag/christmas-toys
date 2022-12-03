@@ -1,3 +1,4 @@
+import { colorOfToys } from "shared/constants/colorOfToys";
 import { shapesOfToys } from "shared/constants/shapesOfToys";
 import { ImagesFilter } from "../ImagesFilter/ImagesFilter";
 
@@ -15,6 +16,8 @@ export const Filters = () => {
         sortByQuantity?: SortingDirection | null;
     }
     return (<>
-    <ImagesFilter imageList={shapesOfToys}></ImagesFilter>
+    <ImagesFilter title={'Форма'} imageList={shapesOfToys}></ImagesFilter>
+    <ImagesFilter title={'Цвет'} imageList={colorOfToys} className="color"></ImagesFilter>
+
     </>)
 }
