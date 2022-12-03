@@ -6,8 +6,8 @@ import s from './FilterBar.module.scss'
 export const FilterBar:FC =()=>{
     //TODO реадизовать компонент
     return(
-        <div className={s.filters}>
-            <Filters/>
+        <div className={s.filterBar}>
+            <Filters className={s.filterBar__filters}/>
         </div>
     )
 }
