@@ -1,1 +1,1 @@
-export const colorOfToys=['whiteSquare','yellowSquare', 'redSquare', 'blueSquare', 'greenSquare']
+export const colorOfToys=['white','yellow', 'red', 'blue', 'green']

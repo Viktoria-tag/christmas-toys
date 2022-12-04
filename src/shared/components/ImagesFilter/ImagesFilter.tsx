@@ -1,9 +1,8 @@
 import classNames from "classnames"
-import { FC, useState } from "react"
-import { useSearchParams } from "react-router-dom"
-import { useFilterQuery } from "shared/hooks/useFiltersQuery"
+import { FC } from "react"
+import { useParams, useSearchParams } from "react-router-dom"
 import { Icon } from "../Icon"
-import { ImageFilterBtn } from "./ImageFilterBtn"
+import { ImageFilterSwitch } from "./ImageFilterSwitch"
 
 import s from './ImagesFilter.module.scss'
 
@@ -15,22 +14,17 @@ type FilterProps = {
 }
 
 export const ImagesFilter: FC<FilterProps> = ({ title, name, valueList, className }) => {
-    const [searchParams, setSearchParams] = useSearchParams()
 
-    const setValue = ( value:string) => {
-        const search: { [key: string]: any } = {}
-        search[name] = value
-        setSearchParams(search, { replace: true })
-    }
 
     return (<div>
         <h3>{title}</h3>
         {valueList.map((value, index) => {
-            return <ImageFilterBtn
+            return <ImageFilterSwitch
                 key={index}
-                image={value}
+                value={value}
                 className={className}
-                handleClick={setValue} />
+                name={name}
+            />
         }
         )}
     </div>)

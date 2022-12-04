@@ -2,7 +2,7 @@ import { useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { useSearchParams } from "react-router-dom";
 import {FilterType} from 'shared/components/Filters'
-
+/*
 export function useFilterQuery(){
 
 const [searchParams, setSearchParams] = useSearchParams();
@@ -11,11 +11,12 @@ return [searchParams, setSearchParams]
 
   // возвращаем сам фильтр и две функции для его изменения
   //return [filter, сhangeFilter, сlearFilter];
-}
-
-
+}*/
 
 /*
+
+
+
 const getObjectFromQueryString = (search: string) => {
   const paramsEntries = new URLSearchParams(search).entries();
   
