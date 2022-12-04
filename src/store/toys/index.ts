@@ -20,7 +20,7 @@ const toysSlice = createSlice({
 
   reducers: {
     setToyList(state, action: PayloadAction<any>) {
-      state.toyList = action.payload.fullName;
+      state.toyList = action.payload;
     },
   },
   extraReducers: (builder) => {

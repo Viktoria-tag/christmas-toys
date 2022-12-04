@@ -1,26 +1,16 @@
 import classNames from 'classnames';
 import { FC } from "react";
+import { useSearchParams } from 'react-router-dom';
 import { colorOfToys } from "shared/constants/colorOfToys";
 import { shapesOfToys } from "shared/constants/shapesOfToys";
 import { ImagesFilter } from "../ImagesFilter/ImagesFilter";
 
-type SortingDirection = 'highest' | 'lowest';
-
 type Props={
     className?:string
 }
-export type FilterType = {
-    shape: string;
-    color?: string;
-    size?: string;
-    isLIke?: boolean;
-    year?: number;
-    quantity?: number;
-    sortByName?: SortingDirection | null;
-    sortByQuantity?: SortingDirection | null;
-}
-export const Filters:FC<Props> = ({className}) => {
 
+export const Filters:FC<Props> = ({className}) => {
+  
 
     return (
     <div className={className}>

@@ -5,8 +5,9 @@ import { FC } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Icon } from "shared/components/Icon";
 import { useFilterQuery } from "shared/hooks/useFiltersQuery";
+import { translate } from "shared/utiles/translate";
 
-import s from '../ImagesFilter.module.scss'
+import s from '../ImagesFilter.module.scss';
 
 type Props = {
     value: string,
@@ -16,12 +17,13 @@ type Props = {
 
 
 export const SwitchFilter: FC<Props> = ({ value, className, name }) => {
-
-    const [params, setFilter, deleteFilter] = useFilterQuery(value, name)
+    const valueString = translate(value)
+    const [params, setFilter, deleteFilter] = useFilterQuery(valueString, name)
     const [isChecked, setIsChecked] = useState(false)
+    console.log(valueString)
 
     useEffect(() => {
-        (params.includes(value)) ? setIsChecked(true) : setIsChecked(false)
+        (params.includes(valueString)) ? setIsChecked(true) : setIsChecked(false)
     }, [])
 
     const setValue = () => {
