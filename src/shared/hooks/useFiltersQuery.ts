@@ -2,8 +2,8 @@ import { useSearchParams } from "react-router-dom";
 
 type useFilterQueryTypes = [
   searchParams: string[],
-  сhangeFilter: () => void,
-  сlearFilter: () => void,
+  setFilter: () => void,
+  deleteFilter: () => void,
 
 ];
 
@@ -12,12 +12,12 @@ export const useFilterQuery = (value: string, name: string): useFilterQueryTypes
   const [searchParams, setSearchParams] = useSearchParams();
   const params = searchParams.getAll(name)
 
-  const сhangeFilter = () => {
+  const setFilter = () => {
 
     searchParams.append(name, value)
     setSearchParams(searchParams)
   }
-  const сlearFilter = () => {
+  const deleteFilter = () => {
     const updatedSearchParams = new URLSearchParams(
       [...searchParams].filter(
         ([key, val]) => key !== name || val !== value
@@ -25,6 +25,6 @@ export const useFilterQuery = (value: string, name: string): useFilterQueryTypes
     )
     setSearchParams(updatedSearchParams)
   }
-  return [params, сhangeFilter, сlearFilter];
+  return [params, setFilter, deleteFilter];
 
 }
