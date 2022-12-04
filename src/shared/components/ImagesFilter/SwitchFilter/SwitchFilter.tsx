@@ -19,7 +19,7 @@ export const SwitchFilter: FC<Props> = ({ value, className, name }) => {
 
     const [params, setFilter, deleteFilter] = useFilterQuery(value, name)
     const [isChecked, setIsChecked] = useState(false)
-    
+
     useEffect(() => {
         (params.includes(value)) ? setIsChecked(true) : setIsChecked(false)
     }, [])
@@ -36,12 +36,12 @@ export const SwitchFilter: FC<Props> = ({ value, className, name }) => {
     }
 
     return (
-        <label>
+        <label className={classNames(s.box, { [s[`box_type_${className}`]]: className }, { [s[`active`]]: isChecked })}>
             <input type='checkbox'
                 checked={isChecked}
-                className={classNames(s.btn, { [s[`filter__btn_${className}`]]: className },)}
+                className={s.input}
                 onChange={setValue} />
-            <Icon name={value} height={36} width={36} />
+            <Icon className={classNames(s.filter__icon, { [s[`filter__icon_${className}`]]: className })} name={value} height={36} width={36} />
         </label>
     )
 }

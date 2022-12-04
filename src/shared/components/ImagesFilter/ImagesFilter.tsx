@@ -15,7 +15,7 @@ export const ImagesFilter: FC<FilterProps> = ({ title, name, valueList, classNam
 
 
     return (
-        <div>
+        <div className={s.filter}>
             <h3>{title}</h3>
             {valueList.map((value, index) => {
                 return <SwitchFilter

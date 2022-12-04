@@ -1,61 +1,55 @@
-.btn {
-    padding: 0;
-    border: none;
-    background-color: transparent;
+.box {
+    position: relative;
     cursor: pointer;
-    color: var(--ligth-shade);
-    margin: 10px;
+    display: inline-block;
 
-    &:hover {
-        transition: 0.25s color ease;
-        color: rgba(205, 194, 114, 0.8);
-    }
-
-    &_active {
-        color: rgba(205, 194, 114, 0.8);
+    .input {
+        display: none;
     }
 }
 
-.filter__btn_color {
-    margin: 10px;
+.box_type_shape {
+    margin: 11px;
+}
+
+.box_type_color {
+    margin: 6px;
     padding: 8px;
 
     svg {
-        height: 22px;
-        width: 22px;
+        height: 30px;
+        width: 30px;
     }
 
-    &:hover,
-    &_active {
-        margin: 6px;
-        padding: 8px;
-
-        svg {
-            height: 30px;
-            width: 30px;
-        }
-    }
 }
 
-.filter__btn_size {
+.box_type_size {
 
-    &:nth-of-type(2) {
+    &:nth-of-type(2) svg {
         margin: 14px;
         transform: scale(1.4);
     }
 
-    &:nth-of-type(3) {
+    &:nth-of-type(3) svg {
         margin: 18px;
         transform: scale(1.8);
     }
+}
 
+.active .filter__icon {
+    color: rgba(205, 194, 114, 0.8);
+}
 
-    &:hover {
-        transition: 0.25s color ease;
-        color: rgba(205, 194, 114, 0.8);
-    }
-
-    &_active {
-        color: rgba(205, 194, 114, 0.8);
-    }
+.box_type_color.active:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    width: 6px;
+    height: 10px;
+    border: solid rgba(79, 74, 36, 0.9);
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+    z-index: 10;
 }
