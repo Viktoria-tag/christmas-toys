@@ -1,85 +1,30 @@
-import { useCallback, useMemo } from "react";
-import { useLocation, useNavigate } from "react-router";
 import { useSearchParams } from "react-router-dom";
-import {FilterType} from 'shared/components/Filters'
-/*
-export function useFilterQuery(){
 
-const [searchParams, setSearchParams] = useSearchParams();
-return [searchParams, setSearchParams]
+type useFilterQueryTypes = [
+  searchParams: string[],
+  сhangeFilter: () => void,
+  сlearFilter: () => void,
 
-
-  // возвращаем сам фильтр и две функции для его изменения
-  //return [filter, сhangeFilter, сlearFilter];
-}*/
-
-/*
-
-
-
-const getObjectFromQueryString = (search: string) => {
-  const paramsEntries = new URLSearchParams(search).entries();
-  
-  return Object.fromEntries(paramsEntries);
-};
-const getQueryStringFromObject = (filter: FilterType) => {
-  console.log(filter)
-  return new URLSearchParams(filter).toString()
-};
-
-function omit(obj:object, key: keyof object) {
-  var result = {... obj};
-     delete result[key];
-  return result;
-}
-
-type useFilterQueryTypes<FilterType> = [
-  FilterType,
-  (fieldName: string) => (value: string) => void,
-  (fieldName: string) => () => void
 ];
 
+export const useFilterQuery = (value: string, name: string): useFilterQueryTypes => {
 
-export function useFilterQuery<T extends object>(
-  getFilterQuery?: (query: string) => T,
-  getSearchQuery?: (filter: FilterType) => string
-): useFilterQueryTypes<FilterType> {
-  const { search } = useLocation();
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const params = searchParams.getAll(name)
 
-  const filter = useMemo(() =>
-    // используем функцию переданную через параметры или дефолтную
-    (getFilterQuery ? getFilterQuery(search) : getObjectFromQueryString(search)),
-    [search, getFilterQuery]
-  );
+  const сhangeFilter = () => {
 
-  const setSearchQuery = useCallback((filter:FilterType) => {
-      // используем функцию переданную через параметр или дефолтную
-      const search = getSearchQuery 
-        ? getSearchQuery(filter) 
-        : getQueryStringFromObject(filter).toString();
-      
-      navigate(search, { replace: true });
-   },
-      [history, getSearchQuery]
-  );
+    searchParams.append(name, value)
+    setSearchParams(searchParams)
+  }
+  const сlearFilter = () => {
+    const updatedSearchParams = new URLSearchParams(
+      [...searchParams].filter(
+        ([key, val]) => key !== name || val !== value
+      )
+    )
+    setSearchParams(updatedSearchParams)
+  }
+  return [params, сhangeFilter, сlearFilter];
 
-  const сhangeFilter = useCallback((fieldName: string) => (value: string) => {
-      const newFilter = { ...filter, [fieldName]: value };
-
-      setSearchQuery(newFilter);
-   },
-    [filter, setSearchQuery]
-  );
-
-  const сlearFilter = useCallback((fieldName: string) => () => {
-      const newFilter = omit(filter, fieldName as keyof FilterType);
-
-      setSearchQuery(newFilter);
-   },
-    [filter, setSearchQuery]
-  );
-  // возвращаем сам фильтр и две функции для его изменения
-  return [filter, сhangeFilter, сlearFilter];
 }
-*/

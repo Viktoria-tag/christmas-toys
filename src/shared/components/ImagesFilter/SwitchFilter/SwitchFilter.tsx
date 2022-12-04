@@ -1,9 +1,10 @@
 import classNames from "classnames";
-import { ChangeEvent, ChangeEventHandler, MouseEvent, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { FC } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Icon } from "shared/components/Icon";
+import { useFilterQuery } from "shared/hooks/useFiltersQuery";
 
 import s from '../ImagesFilter.module.scss'
 
@@ -14,28 +15,22 @@ type Props = {
 }
 
 
-export const ImageFilterSwitch: FC<Props> = ({ value, className, name }) => {
-    const [searchParams, setSearchParams] = useSearchParams()
-    const params = searchParams.getAll(name)
+export const SwitchFilter: FC<Props> = ({ value, className, name }) => {
+
+    const [params, сhangeFilter, сlearFilter] = useFilterQuery(value, name)
     const [isChecked, setIsChecked] = useState(false)
+    
     useEffect(() => {
         (params.includes(value)) ? setIsChecked(true) : setIsChecked(false)
     }, [])
 
     const setValue = () => {
-
         if (!isChecked) {
-            searchParams.append(name, value)
-            setSearchParams(searchParams)
+            сhangeFilter()
             setIsChecked(true)
         }
         else {
-            const updatedSearchParams = new URLSearchParams(
-                [...searchParams].filter(
-                    ([key, val]) => key !== name || val !== value
-                )
-            )
-            setSearchParams(updatedSearchParams)
+            сlearFilter()
             setIsChecked(false)
         }
     }
