@@ -25,7 +25,7 @@ const filterList = ['shape', 'color', 'size', 'isLIke', 'year', 'quantity', 'sor
 export const ToyList: FC = () => {
 
     const toys = useSelector(toysSelectors.getToys)
-    const [filterToys, setFilterToys] = useState([])
+    const [filterToys, setFilterToys] = useState(toys)
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
@@ -33,33 +33,49 @@ export const ToyList: FC = () => {
         if (filtersArray.length === 0) {
             setFilterToys(toys)
         }
-    }, [toys, searchParams])
+        else{
+
+        let newFilterToys = [...toys];
+
+        ['shape', 'color', 'size'].forEach((param) => {
+            const filters = searchParams.getAll(param)
+            if (filters.length) {
+                newFilterToys = newFilterToys.filter((toy) => {
+                    return filters.includes(toy[param])
+                })
+            }
+        })
+
+        setFilterToys(newFilterToys)
+    }
+    }, [])
 
 
     useEffect(() => {
+        let newFilterToys = [...toys];
+
         ['shape', 'color', 'size'].forEach((param) => {
             const filters = searchParams.getAll(param)
-   
             if (filters.length) {
-          
-                const newFilterToys = filterToys.filter((toy) => {
-                 return   filters.includes(toy[param])
+                newFilterToys = newFilterToys.filter((toy) => {
+                    return filters.includes(toy[param])
                 })
-                console.log(newFilterToys)
-                setFilterToys(newFilterToys)
             }
         })
+
+        setFilterToys(newFilterToys)
         /*searchParams.forEach((key, value) => {
             if (.includes(value)) {
                 console.log(key, value)
             }
         })*/
-    }, [searchParams, toys])
+
+    }, [searchParams])
 
     return (
         <div className={s.container}>
             <div className={s.toyList}>
-                {filterToys.length && toys.map((toy: Toy, index: number) => {
+                {!!filterToys.length && filterToys.map((toy: Toy, index: number) => {
                     return <ToyCard key={index} toy={toy} />
                 })}
             </div>

@@ -1,5 +1,5 @@
 export const dictionary = {
-    'ball': 'шарик',
+    'ball': 'шар',
     'figurine': 'фигурка',
     'snowflake': 'снежинка',
     'cone': 'шишка',
