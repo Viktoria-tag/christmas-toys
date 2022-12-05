@@ -12,11 +12,11 @@
     },
     {
         "num": "2",
-        "name": "Зелёный шар с цветами",
+        "name": "Зеленый шар с цветами",
         "count": "5",
         "year": "2000",
         "shape": "шар",
-        "color": "зелёный",
+        "color": "зеленый",
         "size": "большой",
         "favorite": false,
         "isSelect": false
@@ -364,11 +364,11 @@
     },
     {
         "num": "34",
-        "name": "Зелёный  шар с узором",
+        "name": "зеленый  шар с узором",
         "count": "8",
         "year": "2010",
         "shape": "шар",
-        "color": "зелёный",
+        "color": "зеленый",
         "size": "большой",
         "favorite": false,
         "isSelect": false
@@ -397,11 +397,11 @@
     },
     {
         "num": "37",
-        "name": "Зелёный  шар Метель",
+        "name": "Зеленый  шар Метель",
         "count": "6",
         "year": "2000",
         "shape": "шар",
-        "color": "зелёный",
+        "color": "зеленый",
         "size": "большой",
         "favorite": false,
         "isSelect": false
@@ -452,11 +452,11 @@
     },
     {
         "num": "42",
-        "name": "Зелёный шар",
+        "name": "Зеленый шар",
         "count": "10",
         "year": "1980",
         "shape": "шар",
-        "color": "зелёный",
+        "color": "зеленый",
         "size": "средний",
         "favorite": false,
         "isSelect": false
@@ -584,11 +584,11 @@
     },
     {
         "num": "54",
-        "name": "Зелёный шар с рисунком",
+        "name": "Зеленый шар с рисунком",
         "count": "6",
         "year": "2010",
         "shape": "шар",
-        "color": "зелёный",
+        "color": "зеленый",
         "size": "большой",
         "favorite": false,
         "isSelect": false

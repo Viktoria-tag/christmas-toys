@@ -37,18 +37,16 @@ export const ToyList: FC = () => {
 
 
     useEffect(() => {
-
         ['shape', 'color', 'size'].forEach((param) => {
             const filters = searchParams.getAll(param)
-
-
+   
             if (filters.length) {
+          
                 const newFilterToys = filterToys.filter((toy) => {
-                    console.log(toy[param], filters)
-                    filters.includes(toy[param])
+                 return   filters.includes(toy[param])
                 })
+                console.log(newFilterToys)
                 setFilterToys(newFilterToys)
-
             }
         })
         /*searchParams.forEach((key, value) => {

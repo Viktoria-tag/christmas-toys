@@ -20,7 +20,6 @@ export const SwitchFilter: FC<Props> = ({ value, className, name }) => {
     const valueString = translate(value)
     const [params, setFilter, deleteFilter] = useFilterQuery(valueString, name)
     const [isChecked, setIsChecked] = useState(false)
-    console.log(valueString)
 
     useEffect(() => {
         (params.includes(valueString)) ? setIsChecked(true) : setIsChecked(false)
