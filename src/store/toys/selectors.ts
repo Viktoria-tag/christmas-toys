@@ -1,9 +1,11 @@
 import { RootState } from "store";
 
-const getSelectedToys = (state: RootState) => state.toys.selectedToyList;
+const getFilteredToys = (state: RootState) => state.toys.filteredToyList;
 const getToys = (state: RootState) => state.toys.toyList;
+const  getSearchParamsString =(state:RootState)=>state.toys.searchParamsString
 
 export const toysSelectors = {
-  getSelectedToys,
+  getFilteredToys,
   getToys,
+  getSearchParamsString
 }

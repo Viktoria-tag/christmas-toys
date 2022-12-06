@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
 import { service } from "api";
 
 const getInitialToyList = createAsyncThunk('toys/getInitialToyList', async () => {

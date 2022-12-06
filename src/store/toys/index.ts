@@ -7,20 +7,28 @@ import { toysAsyncActions } from './actions';
 export type ToysStore = {
   toyList: Toy[];
   selectedToyList: Toy[],
+  searchParamsString:string,
   isLoading: boolean,
 };
 
 const toysSlice = createSlice({
   name: 'toys',
   initialState: {
-    selectedToyList: [],
+    filteredToyList: [],
     toyList: [],
+    searchParamsString: '',
     isLoading: false,
   },
 
   reducers: {
     setToyList(state, action: PayloadAction<any>) {
       state.toyList = action.payload;
+    },
+    setFilteredToyList(state, action: PayloadAction<any>) {
+      state.filteredToyList = action.payload;
+    },
+    setSearchParamsString(state, action: PayloadAction<any>) {
+      state.searchParamsString = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -38,11 +46,6 @@ const toysSlice = createSlice({
         state.toyList = [];
         state.isLoading = true;
       });
-
-    /* updateAccessToken(state, action: PayloadAction<any>) {
-       state.user.accessToken = action.payload.accessToken;
-       state.user.role = decodeJWT(action.payload.accessToken).role!;
-     },*/
 
   },
 });
