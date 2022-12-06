@@ -9,7 +9,7 @@ export const dictionary = {
     'red': "красный",
     'blue': "синий",
     'green': "зеленый",
-    'small': "маленький",
+    'small': "малый",
     'average': "средний",
     'big': "большой",
 }
