@@ -23,23 +23,22 @@ export const Filters: FC<Props> = ({ className }) => {
 
     const setSwitchFilters = (searchParams: URLSearchParams) => {
         const isSetFilters = allFilters.some(filter => !!searchParams.get(filter))
-
         let newFilterToys = [...toys];
 
         if (!isSetFilters) { dispatch(toysActions.setFilteredToyList(newFilterToys)) }
-
-        ['shape', 'color', 'size'].forEach((param) => {
-            const filters = searchParams.getAll(param)
-            if (filters.length) {
-                newFilterToys = newFilterToys.filter((toy) => {
-                    return filters.includes(toy[param])
-                })
-                dispatch(toysActions.setFilteredToyList(newFilterToys))
-            }
-        })
+        else {
+            ['shape', 'color', 'size'].forEach((param) => {
+                const filters = searchParams.getAll(param)
+                if (filters.length) {
+                    newFilterToys = newFilterToys.filter((toy) => {
+                        return filters.includes(toy[param])
+                    })
+                    dispatch(toysActions.setFilteredToyList(newFilterToys))
+                }
+            })
+        }
     }
-
-    useEffect((): any => {
+    useEffect(() => {
         dispatch(toysAsyncActions.getInitialToyList())
             .then(() => {
                 if (!!savedSeachParams) {
