@@ -1,6 +1,4 @@
-import { FC, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
+import { FC } from 'react';
 import { useRootSelector } from 'store';
 
 import { toysSelectors } from 'store/toys/selectors';
@@ -21,7 +19,6 @@ export type FilterType = {
     sortByName?: SortingDirection | null;
     sortByQuantity?: SortingDirection | null;
 }
-const filterList = ['shape', 'color', 'size', 'isLIke', 'year', 'quantity', 'sortByName', 'sortByQuantity']
 
 export const ToyList: FC = () => {
 

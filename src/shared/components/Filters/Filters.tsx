@@ -8,18 +8,23 @@ import { toysActions } from 'store/toys';
 import { toysAsyncActions } from "store/toys/actions";
 import { toysSelectors } from 'store/toys/selectors';
 import { ImagesFilter } from "../ImagesFilter/ImagesFilter";
+import { MultiRangeSlider } from "../MultiRangeSlider";
+import { YearsRangeSlider } from "../YearsRangeSlider";
 
 type Props = {
     className?: string
 }
 
-const allFilters = ['shape', 'color', 'size', 'count', 'year', 'isLiked', 'sort']
+const allFilters = ['shape', 'color', 'size', 'count', 'minYear', 'maxYear', 'isLiked', 'sort']
 
 export const Filters: FC<Props> = ({ className }) => {
     const toys = useRootSelector(toysSelectors.getToys)
     const dispatch = useRootDispatch()
     const [searchParams, setSearchParams] = useSearchParams();
     const savedSeachParams = useRootSelector(toysSelectors.getSearchParamsString)
+
+    const minYear = searchParams.get('minYear')||1900
+    const maxYear = searchParams.get('maxYear')||new Date().getFullYear()
 
     const setSwitchFilters = (searchParams: URLSearchParams) => {
         const isSetFilters = allFilters.some(filter => !!searchParams.get(filter))
@@ -35,7 +40,11 @@ export const Filters: FC<Props> = ({ className }) => {
                     })
                     dispatch(toysActions.setFilteredToyList(newFilterToys))
                 }
+            });
+            newFilterToys = newFilterToys.filter((toy) => {
+                return !!((toy['year'] >= minYear)&&(toy['year'] <= maxYear))
             })
+            dispatch(toysActions.setFilteredToyList(newFilterToys))
         }
     }
     useEffect(() => {
@@ -63,5 +72,6 @@ export const Filters: FC<Props> = ({ className }) => {
             <ImagesFilter name='shape' title={'Форма'} valueList={shapesOfToys} className="shape"></ImagesFilter>
             <ImagesFilter name='color' title={'Цвет'} valueList={colorOfToys} className="color"></ImagesFilter>
             <ImagesFilter name='size' title={'Размер'} valueList={['small', 'average', 'big']} className="size"></ImagesFilter>
+            <YearsRangeSlider title={'Год выпуска'}  name='issueYears' />
         </div>)
 }

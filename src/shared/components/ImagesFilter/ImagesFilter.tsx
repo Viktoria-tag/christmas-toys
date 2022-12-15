@@ -13,7 +13,6 @@ type FilterProps = {
 
 export const ImagesFilter: FC<FilterProps> = ({ title, name, valueList, className }) => {
 
-
     return (
         <div className={s.filter}>
             <h3>{title}</h3>

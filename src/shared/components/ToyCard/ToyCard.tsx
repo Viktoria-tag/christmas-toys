@@ -21,6 +21,7 @@ export const ToyCard: FC<PropTypes> = ({ toy }) => {
                     <li><span className={s.toy__shape}>Форма:</span><span> {toy.shape}</span></li>
                     <li><span className={s.toy__color}>Цвет:</span><span> {toy.color}</span></li>
                     <li><span className={s.toy__size}>Размер:</span><span> {toy.size}</span></li>
+                    <li><span className={s.toy__year}>Год покупки:</span><span> {toy.year}</span></li>
                     <li><span className={s.toy__like}>Любимая:</span><span> {toy.favorite ? ' да' : ' нет'}</span></li>
                     {/* TODO добавить выделение карточки для определения игрушки на елку
                      <button className={s.toy__setLike}>{toy.isSelect ? 'Удалить из выбранных' : 'Добавить в выбранные'}</button> </li>*/}
