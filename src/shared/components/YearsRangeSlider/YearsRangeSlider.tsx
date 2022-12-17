@@ -4,10 +4,13 @@ import { MultiRangeSlider } from '../MultiRangeSlider';
 
 interface YearsRangeSliderProps {
     name: string;
-    title: string
+    title: string;
+    startMinValue: number;
+    startMaxValue: number
 }
 
-export const YearsRangeSlider: FC<YearsRangeSliderProps> = ({ title }) => {
+export const YearsRangeSlider: FC<YearsRangeSliderProps> = ({ title,  startMinValue, startMaxValue}) => {
+
     return (<>
         <h3>{title}</h3>
         <MultiRangeSlider
@@ -15,6 +18,8 @@ export const YearsRangeSlider: FC<YearsRangeSliderProps> = ({ title }) => {
             max={new Date().getFullYear()}
             minRangeName={'minYear'}
             maxRangeName={'maxYear'}
+            startMinValue={startMinValue}
+            startMaxValue={startMaxValue}
         />
     </>)
 }

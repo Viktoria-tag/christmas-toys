@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { useSearchParams } from 'react-router-dom';
+import { useHref, useSearchParams } from 'react-router-dom';
 
 import { colorOfToys } from "shared/constants/colorOfToys";
 import { shapesOfToys } from "shared/constants/shapesOfToys";
@@ -23,12 +23,20 @@ export const Filters: FC<Props> = ({ className }) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const savedSeachParams = useRootSelector(toysSelectors.getSearchParamsString)
 
-    const minYear = searchParams.get('minYear')||1900
-    const maxYear = searchParams.get('maxYear')||new Date().getFullYear()
+    const [startMinValue, setStartMinValue] = useState<number>(1900)
+    const [startMaxValue, setStartMaxValue] = useState<number>(new Date().getFullYear())
+    
+
+
 
     const setSwitchFilters = (searchParams: URLSearchParams) => {
         const isSetFilters = allFilters.some(filter => !!searchParams.get(filter))
         let newFilterToys = [...toys];
+        const newStartMinValue = searchParams.get('minYear') || 1900
+        const newStartMaxValue = searchParams.get('maxYear') || new Date().getFullYear()
+
+        setStartMinValue(Number(newStartMinValue))
+        setStartMaxValue(Number(newStartMaxValue))
 
         if (!isSetFilters) { dispatch(toysActions.setFilteredToyList(newFilterToys)) }
         else {
@@ -42,11 +50,12 @@ export const Filters: FC<Props> = ({ className }) => {
                 }
             });
             newFilterToys = newFilterToys.filter((toy) => {
-                return !!((toy['year'] >= minYear)&&(toy['year'] <= maxYear))
+                return !!((toy['year'] >= newStartMinValue) && (toy['year'] <= newStartMaxValue))
             })
             dispatch(toysActions.setFilteredToyList(newFilterToys))
         }
     }
+
     useEffect(() => {
         dispatch(toysAsyncActions.getInitialToyList())
             .then(() => {
@@ -59,19 +68,19 @@ export const Filters: FC<Props> = ({ className }) => {
             })
     }, [])
 
-
     useEffect(() => {
         setSwitchFilters(searchParams)
         return () => {
             dispatch(toysActions.setSearchParamsString(searchParams.toString()))
         }
-    }, [searchParams, toys])
+    }, [searchParams, toys, savedSeachParams])
 
     return (
         <div className={className}>
             <ImagesFilter name='shape' title={'Форма'} valueList={shapesOfToys} className="shape"></ImagesFilter>
             <ImagesFilter name='color' title={'Цвет'} valueList={colorOfToys} className="color"></ImagesFilter>
             <ImagesFilter name='size' title={'Размер'} valueList={['small', 'average', 'big']} className="size"></ImagesFilter>
-            <YearsRangeSlider title={'Год выпуска'}  name='issueYears' />
+            <YearsRangeSlider title={'Год выпуска'} name='issueYears' startMinValue={startMinValue}
+                startMaxValue={startMaxValue} />
         </div>)
 }

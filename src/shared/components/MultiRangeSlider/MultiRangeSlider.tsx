@@ -16,15 +16,19 @@ import useDebouncedFunction from "shared/hooks/useDeboucedFunction";
 interface MultiRangeSliderProps {
   min: number;
   max: number;
-  minRangeName:string;
-  maxRangeName:string
+  minRangeName: string;
+  maxRangeName: string;
+  startMinValue: number;
+  startMaxValue: number
 }
 
 export const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
   min,
   max,
   minRangeName,
-  maxRangeName
+  maxRangeName,
+  startMinValue,
+  startMaxValue
 }) => {
 
   const minValRef = useRef<HTMLInputElement>(null);
@@ -32,15 +36,19 @@ export const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
   const range = useRef<HTMLDivElement>(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const startMinValue= searchParams.get(minRangeName)||min
-  const startMaxValue =  searchParams.get(maxRangeName)||max
-  const [minVal, setMinVal] = useState<number>(+startMinValue);
-  const [maxVal, setMaxVal] = useState<number>(+startMaxValue);
+  const [minVal, setMinVal] = useState<number>(startMinValue);
+  const [maxVal, setMaxVal] = useState<number>(startMaxValue);
 
   const setFilter = (name: string, value: string) => {
     searchParams.set(name, value)
     setSearchParams(searchParams)
   }
+
+  useEffect(() => {
+    setMinVal(startMinValue)
+    setMaxVal(startMaxValue)
+  }, [startMinValue,
+    startMaxValue])
 
   const debouncedSetSearchParams = useDebouncedFunction(setFilter, 300);
 
@@ -78,14 +86,14 @@ export const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
     const value = Math.min(+event.target.value, maxVal - 1);
     setMinVal(value);
     event.target.value = value.toString();
-    debouncedSetSearchParams(  minRangeName, value.toString())
+    debouncedSetSearchParams(minRangeName, value.toString())
   }
 
   const onChangeRightRange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = Math.max(+event.target.value, minVal + 1);
     setMaxVal(value);
     event.target.value = value.toString();
-    debouncedSetSearchParams(  maxRangeName, value.toString())
+    debouncedSetSearchParams(maxRangeName, value.toString())
   }
 
   return (
