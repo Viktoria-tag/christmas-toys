@@ -10,6 +10,7 @@ import { toysSelectors } from 'store/toys/selectors';
 import { ImagesFilter } from "../ImagesFilter/ImagesFilter";
 import { MultiRangeSlider } from "../MultiRangeSlider";
 import { YearsRangeSlider } from "../YearsRangeSlider";
+import { filterByCheckedParameters, filterByYears } from "./utils";
 
 type Props = {
     className?: string
@@ -23,15 +24,13 @@ export const Filters: FC<Props> = ({ className }) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const savedSeachParams = useRootSelector(toysSelectors.getSearchParamsString)
 
-    const [startMinValue, setStartMinValue] = useState<number>(1900)
-    const [startMaxValue, setStartMaxValue] = useState<number>(new Date().getFullYear())
+    const [startMinYearValue, setStartMinValue] = useState<number>(1900)
+    const [startMaxYearValue, setStartMaxValue] = useState<number>(new Date().getFullYear())
     
 
-
-
-    const setSwitchFilters = (searchParams: URLSearchParams) => {
+    const setFilters = (searchParams: URLSearchParams) => {
         const isSetFilters = allFilters.some(filter => !!searchParams.get(filter))
-        let newFilterToys = [...toys];
+        const newFilterToys = [...toys];
         const newStartMinValue = searchParams.get('minYear') || 1900
         const newStartMaxValue = searchParams.get('maxYear') || new Date().getFullYear()
 
@@ -40,19 +39,9 @@ export const Filters: FC<Props> = ({ className }) => {
 
         if (!isSetFilters) { dispatch(toysActions.setFilteredToyList(newFilterToys)) }
         else {
-            ['shape', 'color', 'size'].forEach((param) => {
-                const filters = searchParams.getAll(param)
-                if (filters.length) {
-                    newFilterToys = newFilterToys.filter((toy) => {
-                        return filters.includes(toy[param])
-                    })
-                    dispatch(toysActions.setFilteredToyList(newFilterToys))
-                }
-            });
-            newFilterToys = newFilterToys.filter((toy) => {
-                return !!((toy['year'] >= newStartMinValue) && (toy['year'] <= newStartMaxValue))
-            })
-            dispatch(toysActions.setFilteredToyList(newFilterToys))
+            let filteredToys = filterByCheckedParameters(searchParams, newFilterToys, dispatch)
+            filteredToys =  filterByYears(searchParams, filteredToys, dispatch)
+            dispatch(toysActions.setFilteredToyList(filteredToys))
         }
     }
 
@@ -61,7 +50,7 @@ export const Filters: FC<Props> = ({ className }) => {
             .then(() => {
                 if (!!savedSeachParams) {
                     setSearchParams(new URLSearchParams(savedSeachParams))
-                    savedSeachParams && setSwitchFilters(new URLSearchParams(savedSeachParams))
+                    savedSeachParams && setFilters(new URLSearchParams(savedSeachParams))
                 } else {
                     dispatch(toysActions.setFilteredToyList(toys))
                 }
@@ -69,7 +58,7 @@ export const Filters: FC<Props> = ({ className }) => {
     }, [])
 
     useEffect(() => {
-        setSwitchFilters(searchParams)
+        setFilters(searchParams)
         return () => {
             dispatch(toysActions.setSearchParamsString(searchParams.toString()))
         }
@@ -80,7 +69,8 @@ export const Filters: FC<Props> = ({ className }) => {
             <ImagesFilter name='shape' title={'Форма'} valueList={shapesOfToys} className="shape"></ImagesFilter>
             <ImagesFilter name='color' title={'Цвет'} valueList={colorOfToys} className="color"></ImagesFilter>
             <ImagesFilter name='size' title={'Размер'} valueList={['small', 'average', 'big']} className="size"></ImagesFilter>
-            <YearsRangeSlider title={'Год выпуска'} name='issueYears' startMinValue={startMinValue}
-                startMaxValue={startMaxValue} />
+            <YearsRangeSlider title={'Год выпуска'} name='issueYears' startMinValue={startMinYearValue}
+                startMaxValue={startMaxYearValue} />
+            
         </div>)
 }

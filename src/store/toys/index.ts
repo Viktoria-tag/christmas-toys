@@ -24,6 +24,7 @@ const toysSlice = createSlice({
       state.toyList = action.payload;
     },
     setFilteredToyList(state, action: PayloadAction<any>) {
+      console.log(action.payload)
       state.filteredToyList = action.payload;
     },
     setSearchParamsString(state, action: PayloadAction<any>) {
