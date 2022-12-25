@@ -14,11 +14,9 @@ type Props = {
     name: string
 }
 
-
 export const SwitchFilter: FC<Props> = ({ value, className, name }) => {
     const valueString = translate(value)
     const [params, setFilter, deleteFilter] = useFilterQuery(valueString, name)
-
     const [isChecked, setIsChecked] = useState(false)
 
     useEffect(() => {

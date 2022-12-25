@@ -9,10 +9,10 @@ type useFilterQueryTypes = [
 export const useFilterQuery = (value: string, name: string): useFilterQueryTypes => {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = searchParams.getAll(name)
-  
+
   const setFilter = () => {
     searchParams.append(name, value)
-    setSearchParams(searchParams)  
+    setSearchParams(searchParams)
   }
   const deleteFilter = () => {
     const updatedSearchParams = new URLSearchParams(
@@ -21,7 +21,6 @@ export const useFilterQuery = (value: string, name: string): useFilterQueryTypes
       )
     )
     setSearchParams(updatedSearchParams)
-
   }
   return [params, setFilter, deleteFilter];
 }

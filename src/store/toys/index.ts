@@ -5,8 +5,7 @@ import { toysAsyncActions } from './actions';
 
 export type ToysStore = {
   toyList: Toy[];
-  selectedToyList: Toy[],
-  searchParamsString:string,
+  filteredToyList: Toy[],
   isLoading: boolean,
 };
 
@@ -15,36 +14,31 @@ const toysSlice = createSlice({
   initialState: {
     filteredToyList: [],
     toyList: [],
-    searchParamsString: '',
     isLoading: false,
-  },
+  } as ToysStore,
 
   reducers: {
-    setToyList(state, action: PayloadAction<any>) {
+    setToyList(state, action: PayloadAction<Toy[]>) {
       state.toyList = action.payload;
     },
-    setFilteredToyList(state, action: PayloadAction<any>) {
-      console.log(action.payload)
+    setFilteredToyList(state, action: PayloadAction<Toy[]>) {
       state.filteredToyList = action.payload;
     },
-    setSearchParamsString(state, action: PayloadAction<any>) {
-      state.searchParamsString = action.payload;
-    },
+
   },
   extraReducers: (builder) => {
     builder
-      .addCase(toysAsyncActions.getInitialToyList.fulfilled, (state, action: any) => {
+      .addCase(toysAsyncActions.getInitialToyList.fulfilled, (state, action: PayloadAction<Toy[]>) => {
         state.toyList = action.payload;
         state.isLoading = false;
       })
 
-      .addCase(toysAsyncActions.getInitialToyList.rejected, (state, action: any) => {
+      .addCase(toysAsyncActions.getInitialToyList.rejected, (state) => {
         state.toyList = [];
         state.isLoading = true;
       })
 
-      .addCase(toysAsyncActions.getInitialToyList.pending, (state, action: any) => {
-        state.toyList = [];
+      .addCase(toysAsyncActions.getInitialToyList.pending, (state) => {
         state.isLoading = true;
       });
 
