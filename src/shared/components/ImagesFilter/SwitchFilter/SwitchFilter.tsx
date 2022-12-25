@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { FC } from "react";
 import { Icon } from "shared/components/Icon";
 import { useFilterQuery } from "shared/hooks/useFiltersQuery";
-import { translate } from "shared/utiles/translate";
+import { translatedValue } from "shared/utiles/translatedValue";
 
 import s from '../ImagesFilter.module.scss';
 
@@ -15,7 +15,7 @@ type Props = {
 }
 
 export const SwitchFilter: FC<Props> = ({ value, className, name }) => {
-    const valueString = translate(value)
+    const valueString = translatedValue(value)
     const [params, setFilter, deleteFilter] = useFilterQuery(valueString, name)
     const [isChecked, setIsChecked] = useState(false)
 

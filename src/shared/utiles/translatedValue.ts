@@ -14,6 +14,6 @@ export const dictionary = {
     'big': "большой",
 }
 
-export const translate = (value: string) => {
+export const translatedValue = (value: string) => {
     return dictionary[value as keyof typeof dictionary]
 }

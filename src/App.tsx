@@ -12,7 +12,7 @@ import { toysActions } from 'store/toys';
 import { toysSelectors } from 'store/toys/selectors';
 
 import './App.css';
-import 'assets/styles/general.scss'
+import 'assets/styles/common.scss'
 
 export const SavedSearch =
   createContext<{ savedSearchString: string, setSearchParamsString: Function } | undefined>(undefined);
