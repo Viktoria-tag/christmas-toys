@@ -1,23 +1,11 @@
-const getToys = (state: any) => state.toys.toyList;
-export const toysSelectors = {
-  getToys
-}
-/*const getUserName = (state: any) => state.auth.user.fullName;
-const getError = (state: any) => state.auth.auth.loginError;
-const getUserToken = (state: any) => state.auth.user.accessToken;
-const getLoadingAuth = (state: any) => state.auth.user.loginInProgress;
-const getLoadingReserveCode = (state: any) => state.auth.auth.isReserveCodeCompiling;
+import { RootState } from "store";
 
-export const usersSelectors = {
-  getRole,
-  getUserName,
-  getError,
-  getUserToken,
-  getLoadingAuth,
-  getLoadingReserveCode,
-};
-export const authSelectors = {
-  getLoadingAuth,
-  getLoadingReserveCode,
-};
-*/
+const getFilteredToys = (state: RootState) => state.toys.filteredToyList;
+const getToys = (state: RootState) => state.toys.toyList;
+const getIsLoading = (state: RootState) => state.toys.isLoading
+
+export const toysSelectors = {
+  getFilteredToys,
+  getToys,
+  getIsLoading
+}

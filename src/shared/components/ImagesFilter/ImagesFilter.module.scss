@@ -1,0 +1,55 @@
+.box {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+
+    .input {
+        display: none;
+    }
+}
+
+.box_type_shape {
+    margin: 11px;
+}
+
+.box_type_color {
+    margin: 6px;
+    padding: 8px;
+
+    svg {
+        height: 30px;
+        width: 30px;
+    }
+
+}
+
+.box_type_size {
+
+    &:nth-of-type(2) svg {
+        margin: 14px;
+        transform: scale(1.4);
+    }
+
+    &:nth-of-type(3) svg {
+        margin: 18px;
+        transform: scale(1.8);
+    }
+}
+
+.active .filter__icon {
+    color: rgba(205, 194, 114, 0.8);
+}
+
+.box_type_color.active:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    width: 6px;
+    height: 10px;
+    border: solid rgba(79, 74, 36, 0.9);
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+    z-index: 10;
+}

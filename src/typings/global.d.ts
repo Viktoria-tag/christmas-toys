@@ -10,10 +10,12 @@ export type Size =
 export type Toy = {
   id: number,
   name: string,
-  year: Date,
+  year: number,
   shape: ToyShap,
   color: Color | Color[],
   size: Size,
   favorite: boolean,
+  count: number,
+  num:number,
 }
 

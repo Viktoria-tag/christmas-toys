@@ -1,0 +1,21 @@
+@import '/src/assets/styles/reusable.scss';
+
+.filterBar {
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+
+    &__filters {
+        @include glass-bg;
+        border-radius: 30px;
+        padding: 20px;
+        height: 100%;
+        max-height: calc(100vh - 120px);
+        min-height: 400px;
+    }
+}

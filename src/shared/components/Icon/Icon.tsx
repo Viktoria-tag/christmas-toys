@@ -14,6 +14,10 @@ export interface IconProps {
   stroke?: boolean;
 }
 
+export const enum IconsName {
+  Tree = "treewhite",
+}
+
 const Icon: FC<IconProps> = ({name, height = 24, width = 24, className, fill = false, stroke = false}) => {
   return (
     <svg
@@ -21,7 +25,7 @@ const Icon: FC<IconProps> = ({name, height = 24, width = 24, className, fill = f
       width={width}
       height={height}
     >
-      <use xlinkHref={`${SpriteIcons}#${name}`} />
+      <use   href={`${SpriteIcons}#${name}`} />
     </svg>
   );
 };

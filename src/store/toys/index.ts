@@ -1,38 +1,46 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { service } from 'api';
 import { Toy } from 'typings/global';
 import { toysAsyncActions } from './actions';
 
 export type ToysStore = {
   toyList: Toy[];
+  filteredToyList: Toy[],
+  isLoading: boolean,
 };
 
 const toysSlice = createSlice({
   name: 'toys',
   initialState: {
+    filteredToyList: [],
     toyList: [],
-  },
+    isLoading: false,
+  } as ToysStore,
 
   reducers: {
-  /*  setToyList(state, action: PayloadAction<any>) {
-      state.toyList = action.payload.fullName;
-    },*/
+    setToyList(state, action: PayloadAction<Toy[]>) {
+      state.toyList = action.payload;
+    },
+    setFilteredToyList(state, action: PayloadAction<Toy[]>) {
+      state.filteredToyList = action.payload;
+    },
+
   },
-    extraReducers: (builder) => {
-      builder
-        .addCase(toysAsyncActions.getInitialToyList.fulfilled, (state, action: any) => {
-          state.toyList = action.payload.data;
+  extraReducers: (builder) => {
+    builder
+      .addCase(toysAsyncActions.getInitialToyList.fulfilled, (state, action: PayloadAction<Toy[]>) => {
+        state.toyList = action.payload;
+        state.isLoading = false;
+      })
 
-        })
-        .addCase(toysAsyncActions.getInitialToyList.rejected, (state, action: any) => {
-          state.toyList = [];
-        });
+      .addCase(toysAsyncActions.getInitialToyList.rejected, (state) => {
+        state.toyList = [];
+        state.isLoading = true;
+      })
 
-      /* updateAccessToken(state, action: PayloadAction<any>) {
-         state.user.accessToken = action.payload.accessToken;
-         state.user.role = decodeJWT(action.payload.accessToken).role!;
-       },*/
+      .addCase(toysAsyncActions.getInitialToyList.pending, (state) => {
+        state.isLoading = true;
+      });
 
   },
 });

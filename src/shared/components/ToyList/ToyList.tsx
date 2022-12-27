@@ -1,32 +1,36 @@
-import { FC, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { FC } from 'react';
+import { useRootSelector } from 'store';
 
-import { useRootDispatch } from 'store';
-import { toysAsyncActions } from 'store/toys/actions';
 import { toysSelectors } from 'store/toys/selectors';
 import { Toy } from 'typings/global';
 import { ToyCard } from '../ToyCard';
 
 import s from './ToyList.module.scss'
 
+type SortingDirection = 'highest' | 'lowest';
+
+export type FilterType = {
+    shape: string;
+    color?: string;
+    size?: string;
+    isLIke?: boolean;
+    year?: number;
+    quantity?: number;
+    sortByName?: SortingDirection | null;
+    sortByQuantity?: SortingDirection | null;
+}
+
 export const ToyList: FC = () => {
-    const dispatch = useRootDispatch()
-    const toys = useSelector(toysSelectors.getToys)
 
-    const setInitialToyList = async () => {
-        dispatch(toysAsyncActions.getInitialToyList())
-    }
+    const toys = useRootSelector(toysSelectors.getFilteredToys)
 
-    useEffect(() => {
-        setInitialToyList()
-    }, [])
-
-console.log(typeof toys)
     return (
         <div className={s.container}>
-            {/*!!toys.length && toys.map((toy: Toy, index: number) => {
-                return <ToyCard key={index} />
-            })*/}
+            <div className={s.toyList}>
+                {!!toys.length && toys.map((toy: Toy, index: number) => {
+                    return <ToyCard key={index} toy={toy} />
+                })}
+            </div>
         </div>
     )
 }
